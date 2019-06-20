@@ -34,4 +34,7 @@ Route::get('/cars/index', ['uses'=>'CarsController@index','as'=>'cars_index']);
 
 Route::get('/cars/reservations/seedates', ['uses'=>'CarsController@seedates','as'=>'cars_seedates']);
 
-Route::post('/cars/reservations/categories', ['uses'=>'CarsController@categories','as'=>'cars_categories']);
+Route::get('/cars/reservations/categories', ['uses'=>'CarsController@categories','as'=>'cars_categories']);
+
+Route::get('/cars/prueba',function(){dd(\App\Location::find(1)->branch);
+});

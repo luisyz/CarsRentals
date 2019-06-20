@@ -1,11 +1,3 @@
-<!-- // if (empty($_GET['pickup_date']) || empty($_GET['pickup_location']) || empty($_GET['return_date']) || empty($_GET['return_location'])){
-//    return redirect('/cars/reservations/seedates')->withLocation($location);
-//   // echo 'No llenaste todos los datos';
-//
-// } -->
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

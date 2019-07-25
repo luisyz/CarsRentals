@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+@extends('master')
+@section('content')
     <form class="" action="{{route('cars_categories')}}" method="get">
       <h1>Select the dates you will use our car:</h1>
       <label for="pickup_location">Pickup Location:</label>
@@ -25,5 +20,4 @@
       <input type="date" name="return_date" placeholder="return_date" id="return_date">
       <button type="submit">Continue</button>
     </form>
-  </body>
-</html>
+@endsection

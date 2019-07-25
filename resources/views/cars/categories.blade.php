@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <form class="" action="index.html" method="get">
+@extends('master')
+@section('content')
+    <form class="" action="{{route('cars_index')}}" method="get">
       <h1>Select the type of car you need:</h1>
       {{csrf_field()}}
       <select class="category_id" name="category_id">
@@ -15,5 +10,4 @@
       </select>
       <button type="submit">Continue</button>
     </form>
-  </body>
-</html>
+@endsection

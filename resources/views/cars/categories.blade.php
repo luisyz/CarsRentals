@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <form class="" action="{{route('cars_index')}}" method="get">
+    <form class="" action="{{route('cars_pinfo')}}" method="get">
       <h1>Select the type of car you need:</h1>
       {{csrf_field()}}
       <select class="category_id" name="category_id">

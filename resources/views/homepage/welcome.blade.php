@@ -9,4 +9,7 @@
 </div>
       <button type="submit">Rent a car</button>
     </form>
+    <form class="" action="{{route('cars_checkreservations')}}" method="get">
+      <button type="submit">Check my reservation</button>
+    </form>
 @endsection

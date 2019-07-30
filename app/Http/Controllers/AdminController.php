@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Car;
 use App\Category;
 use App\Location;
+use App\Reservation;
 use Validator;
 use App\Http\Requests\ListAvailableCategoriesRequest;
 
@@ -39,6 +40,13 @@ class AdminController extends Controller
   {
     $categories=Category::all();
     return view('admin.createcategory')->withCategories($categories);
+  }
+  public function viewreservation(Request $request)
+  {
+    $categories=Category::all();
+    $location=Location::all();
+    $reservations=Reservation::all();
+    return view('admin.viewreservation')->withCategories($categories)->withLocation($location)->withReservations($reservations);
   }
   public function reservation()
   {

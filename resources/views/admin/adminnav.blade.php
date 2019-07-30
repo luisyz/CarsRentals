@@ -11,4 +11,7 @@
     <form class="" action="{{route('admin_createcategory')}}" method="get">
     <button type="submit">Categories</button>
     </form>
+    <form class="" action="{{route('admin_viewreservation')}}" method="get">
+    <button type="submit">Reservations</button>
+    </form>
 @endsection

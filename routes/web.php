@@ -32,17 +32,23 @@ Route::get('/admin/createcategory', ['uses'=>'AdminController@createcategory','a
 
 Route::get('/admin/createlocation', ['uses'=>'AdminController@createlocation','as'=>'admin_createlocation']);
 
+Route::get('/admin/viewreservation', ['uses'=>'AdminController@viewreservation','as'=>'admin_viewreservation']);
+
 Route::post('/store/createcategory', ['uses'=>'StoreController@storecategory','as'=>'category_store']);
 
 Route::post('/store/createstore', ['uses'=>'StoreController@storelocation','as'=>'location_store']);
 
 Route::post('/store/createreseservation', ['uses'=>'StoreController@storereservation','as'=>'reservation_store']);
 
+Route::post('/store/checkreseservation', ['uses'=>'StoreController@checkreservation','as'=>'reservation_check']);
+
 Route::get('/cars/index', ['uses'=>'CarsController@index','as'=>'cars_index']);
 
 Route::get('/cars/reservations/seedates', ['uses'=>'CarsController@seedates','as'=>'cars_seedates']);
 
 Route::get('/cars/reservations/categories', ['uses'=>'CarsController@categories','as'=>'cars_categories']);
+
+Route::get('/cars/reservations/checkreservations', ['uses'=>'CarsController@checkreservations','as'=>'cars_checkreservations']);
 
 Route::get('/cars/reservations/pinfo', ['uses'=>'CarsController@pinfo','as'=>'cars_pinfo']);
 

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Car;
+use App\Category;
+use App\Location;
+use App\Reservation;
+use Validator;
+use App\Http\Requests\ListAvailableCategoriesRequest;
 
 class StoreController extends Controller
 {
@@ -21,5 +27,13 @@ class StoreController extends Controller
   {
     Reservation::create($request->all());
     return route('homepage');
+  }
+  public function checkreservation(Request $request)
+  {
+    Reservation::get('$reservation_id');
+    $categories=Category::all();
+    $location=Location::all();
+    $reservations=Reservation::all();
+    return view('cars.checkreservations')->withCategories($categories)->withLocation($location)->withReservations($reservations);
   }
 }

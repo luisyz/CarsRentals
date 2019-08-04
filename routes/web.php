@@ -38,7 +38,7 @@ Route::post('/store/createcategory', ['uses'=>'StoreController@storecategory','a
 
 Route::post('/store/createstore', ['uses'=>'StoreController@storelocation','as'=>'location_store']);
 
-Route::post('/store/createreseservation', ['uses'=>'StoreController@storereservation','as'=>'reservation_store']);
+Route::get('/store/createreseservation', ['uses'=>'StoreController@storereservation','as'=>'reservation_store']);
 
 Route::post('/store/checkreseservation', ['uses'=>'StoreController@checkreservation','as'=>'reservation_check']);
 
@@ -49,6 +49,10 @@ Route::get('/cars/reservations/seedates', ['uses'=>'CarsController@seedates','as
 Route::get('/cars/reservations/categories', ['uses'=>'CarsController@categories','as'=>'cars_categories']);
 
 Route::get('/cars/reservations/checkreservations', ['uses'=>'CarsController@checkreservations','as'=>'cars_checkreservations']);
+
+Route::get('/cars/reservations/viewreservations', ['uses'=>'CarsController@viewreservations','as'=>'cars_viewreservations']);
+
+Route::post('/cars/reservations/payment', ['uses'=>'CarsController@payment','as'=>'cars_payment']);
 
 Route::get('/cars/reservations/pinfo', ['uses'=>'CarsController@pinfo','as'=>'cars_pinfo']);
 

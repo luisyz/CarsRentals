@@ -4,19 +4,14 @@
 <hr/>
   <form action="{{route('category_store')}}" method="post">
     {{csrf_field()}}
-    <input type="text" name="brand" placeholder="brand"/>
-    <input type="text" name="model" placeholder="model">
-    <input type="number" name="year" placeholder="year">
-    <select class="category_id" name="category_id">
-      @foreach($categories as $c)
-      <option value="{{$c->id}}">{{$c->name}}</option>
-      @endforeach
-    </select>
+    <input type="text" name="name" placeholder="name"/>
+    <input type="text" name="capacity" placeholder="capacity">
+    <input type="number" name="cost" placeholder="cost">
     <button type="submit">Continue</button>
   </form>
   <hr/>
   <br/>
-  <h3>Current active locations:</h3>
+  <h3>Current active categories:</h3>
   <table class="category_id" name="locations">
     <tr>
     <th>Name</th>

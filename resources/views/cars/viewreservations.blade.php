@@ -1,37 +1,87 @@
+<?php
+session_start();
+$_SESSION["fullname"]=$_GET["fullname"];
+$_SESSION["email"]=$_GET["email"];
+if(isset($_GET["extra1"])&&$_GET["extra1"]!=1){
+  $_SESSION["extra1"]=$_GET["extra1"];
+}
+else{
+  $_SESSION["extra1"]=0;
+}
+if(isset($_GET["extra2"])&&$_GET["extra2"]!=2){
+$_SESSION["extra2"]=$_GET["extra2"];
+}
+else{
+  $_SESSION["extra2"]=0;
+}
+if(isset($_GET["extra3"])&&$_GET["extra3"]!=3){
+$_SESSION["extra3"]=$_GET["extra3"];
+}
+else{
+  $_SESSION["extra3"]=0;
+}
+$_SESSION["creditcard"]=$_GET["creditcard"];
+
+$inicio=$_SESSION["pickup_date"];
+$fin=$_SESSION["return_date"];
+$costoe1=$_SESSION["extra1"];
+$costoe2=$_SESSION["extra2"];
+$costoe3=$_SESSION["extra3"];
+$costom= \App\Category::find($_SESSION["category_id"])->cost;
+
+    $inicio = new DateTime($inicio);
+    $fin = new DateTime($fin);
+    $difdias = date_diff($inicio, $fin)->days;
+
+$costocalc=function($difdias, $costoe1, $costoe2, $costoe3, $costom)
+{
+    $costototal = ($difdias*($costoe1+$costoe2+$costoe3+$costom));
+    return round($costototal);
+};
+
+ ?>
 @extends('master')
 @section('content')
-<h3>Here's your reservation:</h3>
+<h3>Is the following information about your reservation ok?:</h3>
+<form action="{{route('cars_payment')}}" method="post">
 <table class="reservations" name="reservations">
   <tr>
-  <th>Reservation Nr.</th>
   <th>Full Name</th>
   <th>Email</th>
-  <!-- <th>Address</th> -->
-  <!-- <th>Zipcode</th> -->
   <th>Creditcard Number</th>
   <th>Pickup Location</th>
   <th>Return Location</th>
   <th>Pickup date</th>
   <th>Return Date</th>
   <th>Car Category</th>
-  <th>Ammount to pay</th>
+  <th>Costo</th>
   <th>Extras</th>
 </tr>
   {{csrf_field()}}
-<tr value="{{$r->id}}">
-<td>{{$r->id}}</td>
-<td>{{$r->fullname}}</td>
-<!-- <td>{{$r->email}}</td>
-<td>{{$r->address}}</td> -->
-<td>{{$r->zipcode}}</td>
-<td>{{$r->creditcard}}</td>
-<td>{{$r->pickup_id}}</td>
-<td>{{$r->return_id}}</td>
-<td>{{$r->pickup_date}}</td>
-<td>{{$r->return_date}}</td>
-<td>{{$r->category_id}}</td>
-<td>{{$r->cost}}</td>
-<td>{{$r->extras}}</td>
-</tr>
+  <tr>
+    <td>{{$_SESSION["fullname"]}}</td>
+    <td>{{$_SESSION["email"]}}</td>
+    <td>{{$_SESSION["creditcard"]}}</td>
+    <td>{{\App\Location::find($_SESSION['pickup_location'])->branch}}</td>
+    <td>{{\App\Location::find($_SESSION['return_location'])->branch}}</td>
+    <td>{{$_SESSION["pickup_date"]}}</td>
+    <td>{{$_SESSION["return_date"]}}</td>
+    <td>{{\App\Category::find($_SESSION["category_id"])->name}}</td>
+    <td>${{$costocalc($difdias, $costoe1, $costoe2, $costoe3, $costom)}}</td>
+    <?php
+    $ex="extra";
+    for($i=1;$i<=3;$i++){
+    if($_SESSION[$ex.$i]>0){
+      ?>
+    <td>{{\App\Extra::find($i)->ename}}</td>
+    <?php
+    }
+    }
+     ?>
+  </tr>
 </table>
+<input type="hidden" name="cost" value="{{$costocalc($difdias, $costoe1, $costoe2, $costoe3, $costom)}}">
+<button type="submit">Proceed to Payment</button>
+
+</form>
 @endsection

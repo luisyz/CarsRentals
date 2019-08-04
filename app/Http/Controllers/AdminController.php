@@ -7,6 +7,7 @@ use App\Car;
 use App\Category;
 use App\Location;
 use App\Reservation;
+use App\Extra;
 use Validator;
 use App\Http\Requests\ListAvailableCategoriesRequest;
 

@@ -7,6 +7,7 @@ use App\Car;
 use App\Category;
 use App\Location;
 use App\Reservation;
+use App\Extra;
 use Validator;
 use App\Http\Requests\ListAvailableCategoriesRequest;
 
@@ -15,7 +16,7 @@ class StoreController extends Controller
   public function storecategory(Request $request)
   {
     Category::create($request->all());
-    return route('cars_seedates');
+    return route('admin_createcategory');
   }
 
   public function storelocation(Request $request)

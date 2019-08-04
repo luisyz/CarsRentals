@@ -17,14 +17,15 @@ class CreateReservationTable extends Migration
              $table->increments('id');
              $table->string('fullname');
              $table->string('email');
-             $table->string('address');
-             $table->integer('zipcode');
              $table->string('creditcard');
              $table->integer('pickup_id');
              $table->integer('return_id');
              $table->date('pickup_date');
              $table->date('return_date');
              $table->integer('category_id');
+             $table->integer('extras_id');
+             $table->double('cost');
+             $table->double('toPay');
              $table->timestamps();
          });
      }

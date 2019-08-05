@@ -2,6 +2,8 @@
 @section('content')
 <?php
 $r= \App\Reservation::find($_GET["reservation_id"]);
+if($r){
+
 if($r->fullname==$_GET["fullname"]){
 
 
@@ -147,6 +149,7 @@ if(($difdias>=2) && ($difcreacion<=1)){
 
     }
   }
+}
 }
   else{
      ?>

@@ -40,6 +40,8 @@ Route::post('/store/createlocation', ['uses'=>'StoreController@storelocation','a
 
 Route::get('/store/payment', ['uses'=>'StoreController@payment','as'=>'payment']);
 
+Route::get('/store/paymentres', ['uses'=>'StoreController@paymentres','as'=>'paymentres']);
+
 Route::get('/store/deletecategory', ['uses'=>'StoreController@deletecategory','as'=>'category_delete']);
 
 Route::get('/store/deletelocation', ['uses'=>'StoreController@deletelocation','as'=>'location_delete']);

@@ -74,4 +74,24 @@ class StoreController extends Controller
  $id=Reservation::create($request->all());
  return view('cars.confirmation')->withId($id);
   }
+
+  public function paymentres(Request $request){
+    \Stripe\Stripe::setApiKey('sk_test_3VJB2l9edZTMCRYGLvX6KuQ900FkWJIxCq');
+    $token = $_GET['stripeToken'];
+    $cartammount= $_GET['cost'];
+    $id=$_GET['id'];
+    $toPay=$_GET['toPay'];
+    $charge = \Stripe\Charge::create([
+    'amount' => $cartammount*90,
+    'currency' => 'usd',
+    'description' => 'Reservation charge',
+    'source' => $token,
+]);
+ //dd('successful payment');
+ $payment=Reservation::find($id);
+ $payment->toPay=0;
+ $payment->save();
+ // return view('cars.confirmation')->withId($id);
+ dd('Payment successful');
+  }
 }

@@ -27,6 +27,8 @@ class CarsController extends Controller
     {
       $categories=Category::all();
       $location=Location::all();
+      // $categories=Category::find($request->pickup_location)->locations();
+      // $location=Location::find($request->pickup_location)->categories();
       return view('cars.categories')->withCategories($categories)->withLocation($location);
     }
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-// 
+//
 // $msg = "Hello " . $id->fullname . "\nHere is some information about your reservation:\n
 // Reservation id: " . $id->id . "\n
 // Pick Up location: " . \App\Location::find($id->pickup_id)->branch ."\n
@@ -22,5 +22,7 @@ session_start();
     <h3>your reservation id is: {{$id->id}}</h3>
     <h3>under the name of: {{$id->fullname}}</h3>
     <hr/>
-
+    <form class="" action="{{route('homepage')}}" method="get">
+      <button type="submit">Go to homepage</button>
+    </form>
     @endsection

@@ -27,16 +27,24 @@ $fin=$_SESSION["return_date"];
 $costoe1=$_SESSION["extra1"];
 $costoe2=$_SESSION["extra2"];
 $costoe3=$_SESSION["extra3"];
+$isA=$_SESSION["airport"];
 $costom= \App\Category::find($_SESSION["category_id"])->cost;
+
 
     $inicio = new DateTime($inicio);
     $fin = new DateTime($fin);
     $difdias = date_diff($inicio, $fin)->days;
 
-$costocalc=function($difdias, $costoe1, $costoe2, $costoe3, $costom)
+$costocalc=function($difdias, $costoe1, $costoe2, $costoe3, $costom, $isA)
 {
     $costototal = ($difdias*($costoe1+$costoe2+$costoe3+$costom));
+    if($isA==1){
+      $costototal= $costototal*1.10;
+      return round($costototal);
+    }
+    else{
     return round($costototal);
+    }
 };
 
  ?>
@@ -67,7 +75,7 @@ $costocalc=function($difdias, $costoe1, $costoe2, $costoe3, $costom)
     <td>{{$_SESSION["pickup_date"]}}</td>
     <td>{{$_SESSION["return_date"]}}</td>
     <td>{{\App\Category::find($_SESSION["category_id"])->name}}</td>
-    <td>${{$costocalc($difdias, $costoe1, $costoe2, $costoe3, $costom)}}</td>
+    <td>${{$costocalc($difdias, $costoe1, $costoe2, $costoe3, $costom, $isA)}}</td>
     <?php
     $ex="extra";
     for($i=1;$i<=3;$i++){
@@ -80,7 +88,7 @@ $costocalc=function($difdias, $costoe1, $costoe2, $costoe3, $costom)
      ?>
   </tr>
 </table>
-<input type="hidden" name="cost" value="{{$costocalc($difdias, $costoe1, $costoe2, $costoe3, $costom)}}">
+<input type="hidden" name="cost" value="{{$costocalc($difdias, $costoe1, $costoe2, $costoe3, $costom, $isA)}}">
 <button type="submit">Proceed to Payment</button>
 
 </form>

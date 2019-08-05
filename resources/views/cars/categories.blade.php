@@ -4,6 +4,8 @@ $_SESSION["pickup_location"]=$_GET["pickup_location"];
 $_SESSION["pickup_date"]=$_GET["pickup_date"];
 $_SESSION["return_location"]=$_GET["return_location"];
 $_SESSION["return_date"]=$_GET["return_date"];
+$isAirport= \App\Location::find($_SESSION["pickup_location"])->is_airport;
+$_SESSION["airport"]=$isAirport;
  ?>
 @extends('master')
 @section('content')
@@ -11,7 +13,7 @@ $_SESSION["return_date"]=$_GET["return_date"];
       <h1>Select the type of car you need:</h1>
       {{csrf_field()}}
       <select class="category_id" name="category_id" id="category_id">
-      @foreach($categories->locations as $c)
+      @foreach($categories as $c)
       <option value="{{$c->id}}">{{$c->name}} ${{$c->cost}}</option>
       @endforeach
       </select>

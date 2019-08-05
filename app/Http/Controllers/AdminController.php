@@ -22,16 +22,6 @@ class AdminController extends Controller
   //  Admin::create($request->all());
     return view('admin.adminnav');
   }
-  public function browse()
-  {
-    Admin::create($request->all());
-    return view('cars.index');
-  }
-  public function location()
-  {
-    Admin::create($request->all());
-    return view('cars.index');
-  }
   public function createlocation(Request $request)
   {
     $location=Location::all();
@@ -49,20 +39,5 @@ class AdminController extends Controller
     $reservations=Reservation::all();
     $extras=Extra::all();
     return view('admin.viewreservation')->withCategories($categories)->withLocation($location)->withReservations($reservations)->withExtras($extras);
-  }
-  public function reservation()
-  {
-    Admin::create($request->all());
-    return view('cars.index');
-  }
-  public function car()
-  {
-    Admin::create($request->all());
-    return view('cars.index');
-  }
-  public function category()
-  {
-    Admin::create($request->all());
-    return view('cars.index');
   }
 }

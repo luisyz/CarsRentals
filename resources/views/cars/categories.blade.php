@@ -1,11 +1,22 @@
 <?php
 session_start();
+$currd= date('Y/m/d');
+if($_GET["pickup_date"]>=$_GET["return_date"] or $_GET["pickup_date"]<$currd){
+  dd('You can not rent a car with those dates');
+}
 $_SESSION["pickup_location"]=$_GET["pickup_location"];
 $_SESSION["pickup_date"]=$_GET["pickup_date"];
 $_SESSION["return_location"]=$_GET["return_location"];
 $_SESSION["return_date"]=$_GET["return_date"];
 $isAirport= \App\Location::find($_SESSION["pickup_location"])->is_airport;
 $_SESSION["airport"]=$isAirport;
+
+if($_SESSION["pickup_location"]!=$_SESSION["return_location"]){
+  $_SESSION["difloc"]=1;
+}
+else{
+  $_SESSION["difloc"]=0;
+}
  ?>
 @extends('master')
 @section('content')

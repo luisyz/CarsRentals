@@ -10,4 +10,10 @@
 </div>
       <button type="submit">login</button>
     </form>
+
+    <hr>
+    <form class="" action="{{route('homepage')}}" method="get">
+      <button type="submit">Go to homepage</button>
+    </form>
+    <hr>
 @endsection

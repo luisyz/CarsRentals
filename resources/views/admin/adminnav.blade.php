@@ -14,4 +14,10 @@
     <form class="" action="{{route('admin_viewreservation')}}" method="get">
     <button type="submit">Reservations</button>
     </form>
+
+    <hr>
+    <form class="" action="{{route('homepage')}}" method="get">
+      <button type="submit">Go to homepage</button>
+    </form>
+    <hr>
 @endsection

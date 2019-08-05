@@ -1,5 +1,10 @@
 @extends('master')
 @section('content')
+<hr>
+<form class="" action="{{route('homepage')}}" method="get">
+  <button type="submit">Go to homepage</button>
+</form>
+<hr>
 <h3>Current active reservations:</h3>
 <table class="reservations" name="reservations">
   <tr>

@@ -20,4 +20,6 @@
       <input type="date" name="return_date" placeholder="return_date" id="return_date">
       <button type="submit">Continue</button>
     </form>
+    <hr>
+    <h5>Note: Selecting airports or different pickup-return locations has an extra fee</h5>
 @endsection

@@ -1,5 +1,10 @@
 @extends('master')
 @section('content')
+<hr>
+<form class="" action="{{route('homepage')}}" method="get">
+  <button type="submit">Go to homepage</button>
+</form>
+<hr>
 <h3>Please fill the following to create a new location</h3>
 <hr/>
   <form action="{{route('location_store')}}" method="post">

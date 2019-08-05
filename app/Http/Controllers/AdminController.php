@@ -47,7 +47,8 @@ class AdminController extends Controller
     $categories=Category::all();
     $location=Location::all();
     $reservations=Reservation::all();
-    return view('admin.viewreservation')->withCategories($categories)->withLocation($location)->withReservations($reservations);
+    $extras=Extra::all();
+    return view('admin.viewreservation')->withCategories($categories)->withLocation($location)->withReservations($reservations)->withExtras($extras);
   }
   public function reservation()
   {

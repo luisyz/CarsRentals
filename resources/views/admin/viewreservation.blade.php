@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-<h3>Current active locations:</h3>
+<h3>Current active reservations:</h3>
 <table class="reservations" name="reservations">
   <tr>
   <th>Reservation Nr.</th>
@@ -21,15 +21,35 @@
 <tr value="{{$r->id}}">
 <td>{{$r->id}}</td>
 <td>{{$r->fullname}}</td>
+<td>{{$r->email}}</td>
 <td>{{$r->creditcard}}</td>
-<td>{{$location->name}}</td>
-<td>{{$location->name}}</td>
+<td>{{\App\Location::find($r->pickup_id)->branch}}</td>
+<td>{{\App\Location::find($r->return_id)->branch}}</td>
 <td>{{$r->pickup_date}}</td>
 <td>{{$r->return_date}}</td>
-<td>{{$r->category_id}}</td>
+<td>{{\App\Category::find($r->category_id)->name}}</td>
 <td>{{$r->cost}}</td>
 <td>{{$r->toPay}}</td>
-<td>{{$r->extras_id}}</td>
+<?php
+$ex="extra";
+for($i=1;$i<=3;$i++){
+if($i==1 && $r->extra1 >0){
+  ?>
+<td>{{\App\Extra::find($i)->ename}}</td>
+<?php
+}
+elseif($i==2 && $r->extra2 >0){
+  ?>
+<td>{{\App\Extra::find($i)->ename}}</td>
+<?php
+}
+elseif($i==3 && $r->extra3 >0){
+  ?>
+<td>{{\App\Extra::find($i)->ename}}</td>
+<?php
+}
+}
+ ?>
 </tr>
 @endforeach
 </table>

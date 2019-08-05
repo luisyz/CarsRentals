@@ -42,7 +42,7 @@ $costocalc=function($difdias, $costoe1, $costoe2, $costoe3, $costom)
  ?>
 @extends('master')
 @section('content')
-<h3>Is the following information about your reservation ok?:</h3>
+<h3>Is the following information about your reservation ok?</h3>
 <form action="{{route('cars_payment')}}" method="post">
 <table class="reservations" name="reservations">
   <tr>
@@ -54,7 +54,7 @@ $costocalc=function($difdias, $costoe1, $costoe2, $costoe3, $costom)
   <th>Pickup date</th>
   <th>Return Date</th>
   <th>Car Category</th>
-  <th>Costo</th>
+  <th>Cost</th>
   <th>Extras</th>
 </tr>
   {{csrf_field()}}

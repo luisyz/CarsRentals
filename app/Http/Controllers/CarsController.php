@@ -38,6 +38,16 @@ class CarsController extends Controller
       $extras=Extra::all();
       return view('cars.checkreservations')->withCategories($categories)->withLocation($location)->withReservations($reservations)->withExtras($extras);
     }
+    public function reservationtable(Request $request)
+    {
+      // $categories=Category::all();
+      // $location=Location::all();
+       $reservations=Reservation::all();
+      // $extras=Extra::all();
+
+      // return view('cars.checkreservations')->withCategories($categories)->withLocation($location)->withReservations($reservations)->withExtras($extras);
+      return view('cars.reservationtable')->withReservations($reservations);
+    }
 
     public function pinfo(Request $request)
     {

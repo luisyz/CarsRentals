@@ -17,6 +17,7 @@
     <th>Name</th>
     <th>Capacity</th>
     <th>Cost</th>
+    <th>Delete</th>
   </tr>
     {{csrf_field()}}
   @foreach($categories as $c)
@@ -24,6 +25,12 @@
   <td>{{$c->name}}</td>
   <td>{{$c->capacity}}</td>
   <td>{{$c->cost}}</td>
+  <td>
+  <form action="{{route('category_delete')}}" method="get">
+    <input type="hidden" name="id" value="{{$c->id}}">
+    <button type="submit">DELETE</button>
+  </form>
+  </td>
   </tr>
   @endforeach
 </table>

@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <form class="" action="{{route('reservation_check')}}" method="post">
+    <form class="" action="{{route('cars_reservationtable')}}" method="get">
       <h1>Fill the following to check your reservation's info:</h1>
       {{csrf_field()}}
       <label for="reservation_id">Reservation's Number:</label>

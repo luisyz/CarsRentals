@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Location;
 
 class Category extends Model
 {
@@ -14,6 +15,6 @@ class Category extends Model
   }
   public function locations()
   {
-    return $this->belongsToMany('\App\Location');
+    return $this->belongsToMany(Location::class);
   }
 }

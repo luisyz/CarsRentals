@@ -30,6 +30,12 @@
   <td>{{$l->branch}}</td>
   <td>{{$l->rate}}</td>
   <td>{{$l->is_airport}}</td>
+  <td>
+    <form action="{{route('location_delete')}}" method="get">
+      <input type="hidden" name="id" value="{{$l->id}}">
+      <button type="submit">DELETE</button>
+    </form>
+  </td>
   </tr>
   @endforeach
 </table>

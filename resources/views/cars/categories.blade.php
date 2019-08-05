@@ -11,7 +11,7 @@ $_SESSION["return_date"]=$_GET["return_date"];
       <h1>Select the type of car you need:</h1>
       {{csrf_field()}}
       <select class="category_id" name="category_id" id="category_id">
-      @foreach($categories as $c)
+      @foreach($categories->locations as $c)
       <option value="{{$c->id}}">{{$c->name}} ${{$c->cost}}</option>
       @endforeach
       </select>

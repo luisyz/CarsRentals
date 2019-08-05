@@ -9,7 +9,12 @@
 </div>
       <button type="submit">Rent a car</button>
     </form>
+    <br>
     <form class="" action="{{route('cars_checkreservations')}}" method="get">
       <button type="submit">Check my reservation</button>
+    </form>
+    <br>
+    <form class="" action="{{route('admin_log')}}" method="get">
+      <button type="submit">Im an avis' administrator</button>
     </form>
 @endsection

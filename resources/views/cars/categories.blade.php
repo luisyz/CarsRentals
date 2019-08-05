@@ -1,7 +1,7 @@
 <?php
 session_start();
-$currd= date('Y/m/d');
-if($_GET["pickup_date"]>=$_GET["return_date"] or $_GET["pickup_date"]<$currd){
+$currd= date('d/m/Y');
+if($_GET["pickup_date"]>=$_GET["return_date"]){
   dd('You can not rent a car with those dates');
 }
 $_SESSION["pickup_location"]=$_GET["pickup_location"];
